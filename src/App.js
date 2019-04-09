@@ -1,29 +1,82 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import * as stores from './shared/Stores'
+import { observer, Provider, inject } from 'mobx-react';
+import { createAppContainer, NavigationActions, StackActions } from "react-navigation";
+import AppNavigator from './shared/Routes'
+import { observable, reaction } from 'mobx';
+import Splash from './screens/landing-signup/Splash';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+const AppContainer = createAppContainer(AppNavigator);
 
+@inject()
+@observer
 export default class App extends Component {
+  _navigator
+
+  constructor(props) {
+    super(props)
+    // reaction(() => [stores.auth.isAuthenticated, stores.auth.isAnonymous],
+    //   () => {
+    //     let nav = this._navigator.state.nav
+    //     let currentRoute = nav.routes[nav.index]
+    //     let navParams = currentRoute.params
+    //     if (navParams && navParams.returnPage) {
+    //       this.reset(navParams.returnPage, navParams.returnParams)
+    //     }
+    //     else this.reset('VideoPage')
+    //   }, {
+    //     equals: (prev, next) => {
+    //       // console.log('prev: ' + prev)
+    //       // console.log('next: ' + next)
+    //       if (prev[0] !== next[0])
+    //         return false
+    //       if (prev[1] !== next[1] && prev[0])
+    //         return false
+    //       return true
+    //     }
+    //   })
+  }
+
+  async componentDidMount() {
+    await stores.auth.loadApp();
+  }
+
+  setTopLevelNavigator(navigatorRef) {
+    this._navigator = navigatorRef;
+  }
+
+  navigate(routeName, params) {
+    this._navigator.dispatch(
+      NavigationActions.navigate({
+        routeName,
+        params,
+      })
+    );
+  }
+
+  reset(routeName, params) {
+    let actions = [NavigationActions.navigate({ routeName: 'VideoPage' })]
+    if (routeName !== 'VideoPage')
+      actions.push(NavigationActions.navigate({ routeName: routeName, params: params }))
+    this._navigator.dispatch(
+      StackActions.reset({
+        index: actions.length - 1,
+        actions: actions
+      })
+    );
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native ds !</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <Provider {...stores} >
+        {stores.auth.isAppLoading ?
+          <Splash />
+          :
+          <AppContainer ref={navigatorRef => { this.setTopLevelNavigator(navigatorRef); }} />
+        }
+      </Provider>
     );
   }
 }
