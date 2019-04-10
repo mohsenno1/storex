@@ -1,34 +1,30 @@
 import { createStackNavigator } from 'react-navigation'
 import {auth} from './Stores'
 import WelcomePage from '../screens/landing-signup/WelcomePage'
+import SignInPage from '../screens/landing-signup/SignInPage'
+import HomePage from "../screens/landing-signup/HomePage";
+import { colors } from './Constans';
 
-const getRouteTitle = (routeName) => {
-  if(!routeName || routeName.length == 0)
-    return ''
-  routeName = routeName.charAt(0).toLowerCase() + routeName.slice(1) + 'Title'
-  let res = auth.myStrings[routeName]
-  if(res)
-    return res
-  return 'No Name'
-}
-
-const AppNavigator = createStackNavigator(
+const AppNavigator = () => createStackNavigator(
   {
-    WelcomePage
+    WelcomePage,
+    SignInPage,
+    HomePage
   },
   {
-    initialRouteName: auth.showWelcomPages? "WelcomePage": "Home",
+    initialRouteName: auth.showWelcomPages? "WelcomePage": "HomePage",
     defaultNavigationOptions: ({navigation}) => ({
-      //title: getRouteTitle(navigation.state.routeName),
       headerTitleStyle: { textAlign: 'center', alignSelf: 'center' },
       headerStyle: {
-        backgroundColor: 'black',
+        backgroundColor: '#f2f2f2',
         height: 60
       },
-      headerTintColor: '#fff',
+      headerTintColor: '#454545',
       headerTitleStyle: {
         fontWeight: '400',
-        fontSize: 16
+        fontSize: 16,
+        fontFamily: 'Source Sans Pro',
+        textTransform: 'uppercase'
       }
     })
   }

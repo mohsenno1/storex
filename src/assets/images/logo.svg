@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="172" height="91">
+	<defs>
+		<clipPath id="clip_0">
+			<rect x="-234.52954" y="-112.8568" width="639.48798" height="1135.0912" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_0)">
+		<text fill="rgb(69,69,69)" stroke="none" transform="matrix(0.9992 0 0 0.9992 0.210449 0.052803)" font-size="72" font-weight="300" font-family="Advent Pro Light" x="0" y="68.199997">
+				storex
+		</text>
+	</g>
+	<defs>
+		<clipPath id="clip_1">
+			<rect x="-234.52954" y="-112.8568" width="639.48798" height="1135.0912" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_1)">
+		<path fill="none" stroke="rgb(69,69,69)" stroke-width="3" stroke-linecap="square" stroke-miterlimit="4" transform="matrix(0.9992 0 0 0.9992 1.28149 87.9824)" d="M0.5 1.5L164.747 1.5"/>
+	</g>
+	<defs>
+		<clipPath id="clip_2">
+			<rect x="-234.52954" y="-112.8568" width="639.48798" height="1135.0912" clip-rule="evenodd"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#clip_2)">
+		<path fill="none" stroke="rgb(69,69,69)" stroke-width="3" stroke-linecap="square" stroke-miterlimit="4" transform="matrix(0.9992 0 0 0.9992 1.28149 7.0472)" d="M0.5 1.5L164.747 1.5"/>
+	</g>
+
+</svg>

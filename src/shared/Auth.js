@@ -8,7 +8,9 @@ class Auth {
 
     async loadApp() {
         try {
-            this.showWelcomPages = (await AsyncStorage.getItem('@showWelcomPages') != 'false')
+            let a = await AsyncStorage.getItem('@showWelcomPages')
+            console.log(`a is ${a}`)
+            this.showWelcomPages = (await AsyncStorage.getItem('@showWelcomPages') !== 'false')
         }
         catch (e) {
             console.log(e)

@@ -6,6 +6,7 @@ import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import AIcon from 'react-native-vector-icons/AntDesign'
 import Svg,{Rect} from 'react-native-svg';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const wp1 = require('./../../assets/images/welcomepage1.png')
 const wp2 = require('./../../assets/images/welcomepage2.png')
@@ -19,7 +20,6 @@ const welcomePages = [
 const { width: viewportWidth, height: viewportHeight } = Dimensions.get('window');
 
 const CustomDot = (props) => {
-    console.log(props.active)
     return <Svg width={27} height={27}>
         <Rect x={7.5} originX={7.5} originY={7.5} width={15} height={15} fill={props.active? "rgba(239,185,97,1)": "#d8d8d8"} rotation={45}/>
     </Svg>
@@ -52,12 +52,13 @@ export default class WelcomePage extends Component {
         );
     }
 
-    next = () => {
+    next = async () => {
         if (this.currentPageId < welcomePages.length - 1) {
             this._carousel.snapToNext();
         }
         else {
-            this.props.navigation.replace('Home')
+            await AsyncStorage.setItem('@showWelcomPages', 'false')
+            this.props.navigation.replace('SignInPage')
         }
 
     }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="565px" height="653px" viewBox="0 0 565 653" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Image</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="230.740954 0 430.568482 115.370477 430.568482 346.111431 230.740954 461.481908 30.9134261 346.111431 30.9134261 115.370477"></polygon>
+    </defs>
+    <g id="Landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-Unsigned" transform="translate(-38.000000, -358.000000)">
+            <g id="Image" transform="translate(-5.000000, 359.000000)">
+                <polygon id="Border" stroke="#F1F1F1" points="325.5 0.363878752 607.076141 162.931939 607.076141 488.068061 325.5 650.636121 43.9238593 488.068061 43.9238593 162.931939"></polygon>
+                <polygon id="Border" stroke="#E1E1E1" points="324.991975 47.1021962 565.651583 186.047085 565.651583 463.936864 324.991975 602.881753 84.3323671 463.936864 84.3323671 186.047085"></polygon>
+                <g transform="translate(94.223684, 94.223684)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Wrapper" fill="#EFF1F0" xlink:href="#path-1"></use>
+                    <path d="M231.276316,28.3321892 L407.031085,129.804252 L407.031085,332.748379 L231.276316,434.220442 L55.5215466,332.748379 L55.5215466,129.804252 L231.276316,28.3321892 Z" id="White-border" stroke="#FFFFFF" opacity="0.5"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

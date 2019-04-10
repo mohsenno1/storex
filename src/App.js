@@ -8,7 +8,7 @@ import AppNavigator from './shared/Routes'
 import { observable, reaction } from 'mobx';
 import Splash from './screens/landing-signup/Splash';
 
-const AppContainer = createAppContainer(AppNavigator);
+
 
 @inject()
 @observer
@@ -69,13 +69,13 @@ export default class App extends Component {
   }
 
   render() {
+    if(stores.auth.isAppLoading)
+      return <Splash />
+    
+    const AppContainer = createAppContainer(AppNavigator());
     return (
       <Provider {...stores} >
-        {stores.auth.isAppLoading ?
-          <Splash />
-          :
           <AppContainer ref={navigatorRef => { this.setTopLevelNavigator(navigatorRef); }} />
-        }
       </Provider>
     );
   }
