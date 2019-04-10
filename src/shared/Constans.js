@@ -18,6 +18,12 @@ const gstyles = StyleSheet.create({
         fontFamily: 'Source Sans Pro',
         color: colors.gray,
         textTransform: 'uppercase'
+    },
+    linkStyle: {
+        fontFamily: 'Source Sans Pro',
+        color: colors.yellow,
+        textTransform: 'uppercase',
+        fontWeight: 'bold',
     }
 })
 

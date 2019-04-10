@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, KeyboardAvoidingView } from 'react-native'
+import { StyleSheet, Text, View, Dimensions } from 'react-native'
 import { Input, Button } from 'react-native-elements';
 import { observer, inject } from 'mobx-react';
 import { colors, gstyles } from './../../shared/Constans';
@@ -20,6 +20,9 @@ export default class SignInPage extends Component {
 
     constructor(props) {
         super(props)
+
+        this.screenHeight = Dimensions.get('window').height
+
         reaction(() => this.email,
             () => this.validateEmail()
         )
@@ -28,6 +31,7 @@ export default class SignInPage extends Component {
         )
     }
 
+    screenHeight = 100
     @observable errorMessage = null
     @observable email = ''
     @observable password = ''
@@ -75,60 +79,73 @@ export default class SignInPage extends Component {
     }
 
     render() {
-        return <KeyboardAwareScrollView style={{ flex: 1 }}>
-            <View style={styles.container}>
-                <Input inputContainerStyle={styles.textInput}
-                    containerStyle={[styles.textInputContainer]}
-                    placeholderTextColor={colors.gray}
-                    inputStyle={{ color: colors.gray }}
-                    placeholder='Email'
-                    leftIcon={<EIcon name="email" size={20} color={colors.gray} />}
-                    errorStyle={styles.errorStyle}
-                    errorMessage={this.emailErrorMessage}
-                    onChangeText={email => this.email = email}
-                    value={this.email}
-                />
-                <Input inputContainerStyle={styles.textInput}
-                    containerStyle={[styles.textInputContainer]}
-                    placeholderTextColor={colors.gray}
-                    inputStyle={{ color: colors.gray }}
-                    secureTextEntry={true}
-                    placeholder='Password'
-                    leftIcon={<FIcon name="user-secret" size={20} color={colors.gray} />}
-                    errorStyle={styles.errorStyle}
-                    errorMessage={this.passwordErrorMessage}
-                    onChangeText={password => this.password = password}
-                    value={this.password}
-                />
+        return <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
+            <View style={{ flex: 1 }}>
+                <View style={styles.container}>
+                    <Input inputContainerStyle={styles.textInput}
+                        containerStyle={[styles.textInputContainer]}
+                        placeholderTextColor={colors.gray}
+                        inputStyle={{ color: colors.gray }}
+                        placeholder='Email'
+                        leftIcon={<EIcon name="email" size={20} color={colors.gray} />}
+                        errorStyle={styles.errorStyle}
+                        errorMessage={this.emailErrorMessage}
+                        onChangeText={email => this.email = email}
+                        value={this.email}
+                    />
+                    <Input inputContainerStyle={styles.textInput}
+                        containerStyle={[styles.textInputContainer]}
+                        placeholderTextColor={colors.gray}
+                        inputStyle={{ color: colors.gray }}
+                        secureTextEntry={true}
+                        placeholder='Password'
+                        leftIcon={<FIcon name="user-secret" size={20} color={colors.gray} />}
+                        errorStyle={styles.errorStyle}
+                        errorMessage={this.passwordErrorMessage}
+                        onChangeText={password => this.password = password}
+                        value={this.password}
+                    />
 
-                <Button title="Login"
-                    onPress={this.handleLogin}
-                    buttonStyle={styles.button}
-                    loading={this.isLoading} />
-                <Text style={{
-                    marginVertical: 15,
-                    color: colors.gray
-                }}>
-                    Forgot Password?
+                    <Button title="Login"
+                        onPress={this.handleLogin}
+                        buttonStyle={styles.button}
+                        loading={this.isLoading} />
+                    <Text style={{
+                        marginVertical: 15,
+                        color: colors.gray
+                    }}>
+                        Forgot Password?
                     </Text>
-            </View>
-            <View style={[styles.container, { color: colors.lightGray, borderTopWidth: 2, borderTopColor: "rgba(0,0,0,0.1)" }]}>
-                <View style={{ position: 'absolute', top: -9, width: '100%', alignItems: 'center', height: 1 }}>
-                    <Diamond size={16} color={colors.yellow} />
                 </View>
-                <View style={{ height: 100, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={[gstyles.upperText, { paddingHorizontal: 30 }]}>OR, Sign In Using Social Networks</Text>
-                </View>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', }}>
-                    <PolygonIcon color={colors.facebook} size={80} style={{paddingHorizontal: 10}}>
-                        <FIcon name="facebook" size={25} color="white" color="white" />
-                    </PolygonIcon>
-                    <PolygonIcon color={colors.twitter} size={80} style={{paddingHorizontal: 10}}>
-                        <FIcon name="twitter" size={25} color="white" color="white" />
-                    </PolygonIcon>
-                </View>
-                <View style={{ height: 60, alignItems: 'center', justifyContent: 'center' }}><Text>adbd</Text></View>
+                <View style={[styles.container, { color: colors.lightGray, borderTopWidth: 2, borderTopColor: "rgba(0,0,0,0.1)" }]}>
+                    <View style={{ position: 'absolute', top: -9, width: '100%', alignItems: 'center', height: 1 }}>
+                        <Diamond size={16} color={colors.yellow} />
+                    </View>
+                    <View style={{ height: 100, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text style={[gstyles.upperText, { paddingHorizontal: 30 }]}>OR, Sign In Using Social Networks</Text>
+                    </View>
+                    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginHorizontal: 30, }}>
+                        <View style={{ width: 240, backgroundColor: "white", flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                            <PolygonIcon color={colors.facebook} size={80} style={{ paddingHorizontal: 10 }}>
+                                <FIcon name="facebook" size={25} color="white" color="white" />
+                            </PolygonIcon>
+                            <PolygonIcon color={colors.twitter} size={80} style={{ paddingHorizontal: 10 }}>
+                                <FIcon name="twitter" size={25} color="white" color="white" />
+                            </PolygonIcon>
+                        </View>
+                        <View style={{
+                            width: '100%',
+                            height: 2.5,
+                            backgroundColor: "rgba(0,0,0,0.1)",
+                            position: 'absolute',
+                            zIndex: -1
+                        }} />
+                    </View>
+                    <View style={{ height: 80, alignItems: 'center', justifyContent: 'center' }}>
+                        <Text>Not a member? <Text style={gstyles.linkStyle}>SIGN UP</Text></Text>
+                    </View>
 
+                </View>
             </View>
         </KeyboardAwareScrollView>
 
