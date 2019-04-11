@@ -24,6 +24,13 @@ const gstyles = StyleSheet.create({
         color: colors.yellow,
         textTransform: 'uppercase',
         fontWeight: 'bold',
+    },
+    row: {
+        width: '100%',
+        flexDirection: 'row',
+    },
+    column: {
+        flexDirection: 'column'
     }
 })
 

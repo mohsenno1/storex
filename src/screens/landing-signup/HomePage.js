@@ -22,7 +22,6 @@ class HomePage extends Component {
     };
 
     onLayout = (e) => {
-        console.log(`x: ${e.nativeEvent.layout.width}`)
         this.diamondSize = Math.min(e.nativeEvent.layout.width, e.nativeEvent.layout.height);
     }
 

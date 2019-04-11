@@ -10,8 +10,9 @@ import { ScrollView } from 'react-native-gesture-handler';
 import Diamond from '../../components/Diamond';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import PolygonIcon from '../../components/PolygonIcon';
+import FancyLine from '../../components/FancyLine';
 
-@inject()
+@inject('auth')
 @observer
 export default class SignInPage extends Component {
     static navigationOptions = {
@@ -21,8 +22,6 @@ export default class SignInPage extends Component {
     constructor(props) {
         super(props)
 
-        this.screenHeight = Dimensions.get('window').height
-
         reaction(() => this.email,
             () => this.validateEmail()
         )
@@ -31,7 +30,6 @@ export default class SignInPage extends Component {
         )
     }
 
-    screenHeight = 100
     @observable errorMessage = null
     @observable email = ''
     @observable password = ''
@@ -48,14 +46,19 @@ export default class SignInPage extends Component {
             return
 
         this.isLoading = true;
-        let error = await this.props.auth.signUp({
-            signupType: 'signinMail',
+        let error = await this.props.auth.signIn({
             email: this.email,
             password: this.password
+        }).catch(e => {
+            if (e.response.status === 400) {
+                this.errorMessage = e.response.data.error.message
+            }
+            else {
+                this.errorMessage = "An unhandled exception has occured"
+            }
         })
         this.isLoading = false
-        if (error)
-            this.errorMessage = error
+
     }
 
     validateEmail() {
@@ -82,6 +85,10 @@ export default class SignInPage extends Component {
         return <KeyboardAwareScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={{ flex: 1 }}>
                 <View style={styles.container}>
+                    {this.errorMessage &&
+                        <Text style={{ color: 'red', textAlign: "center", paddingVertical: 15 }}>
+                            {this.errorMessage}
+                        </Text>}
                     <Input inputContainerStyle={styles.textInput}
                         containerStyle={[styles.textInputContainer]}
                         placeholderTextColor={colors.gray}
@@ -109,6 +116,7 @@ export default class SignInPage extends Component {
                     <Button title="Login"
                         onPress={this.handleLogin}
                         buttonStyle={styles.button}
+                        containerStyle={{width: '100%', paddingHorizontal: 20}}
                         loading={this.isLoading} />
                     <Text style={{
                         marginVertical: 15,
@@ -117,10 +125,8 @@ export default class SignInPage extends Component {
                         Forgot Password?
                     </Text>
                 </View>
-                <View style={[styles.container, { color: colors.lightGray, borderTopWidth: 2, borderTopColor: "rgba(0,0,0,0.1)" }]}>
-                    <View style={{ position: 'absolute', top: -9, width: '100%', alignItems: 'center', height: 1 }}>
-                        <Diamond size={16} color={colors.yellow} />
-                    </View>
+                <View style={[styles.container, { color: colors.lightGray, }]}>
+                    <FancyLine/>
                     <View style={{ height: 100, alignItems: 'center', justifyContent: 'center' }}>
                         <Text style={[gstyles.upperText, { paddingHorizontal: 30 }]}>OR, Sign In Using Social Networks</Text>
                     </View>
@@ -142,7 +148,11 @@ export default class SignInPage extends Component {
                         }} />
                     </View>
                     <View style={{ height: 80, alignItems: 'center', justifyContent: 'center' }}>
-                        <Text>Not a member? <Text style={gstyles.linkStyle}>SIGN UP</Text></Text>
+                        <Text>Not a member?
+                            <Text style={gstyles.linkStyle}
+                                onPress={() => this.props.navigation.navigate('SignUpPage')}> SIGN UP
+                            </Text>
+                        </Text>
                     </View>
 
                 </View>
@@ -164,11 +174,11 @@ const styles = StyleSheet.create({
     },
     textInputContainer: {
         marginBottom: 5,
-        width: 350
+        width: '100%'
     },
     button: {
         backgroundColor: colors.yellow,
-        width: 150,
+        width: '100%',
         height: 40,
         borderWidth: 0,
         marginTop: 25,
