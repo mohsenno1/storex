@@ -6,14 +6,53 @@ import client from './Client'
 class Auth {
     @observable showWelcomPages = true
     @observable isAppLoading = true
+    @observable isAuthenticated = false
 
-    user
+    customer
     accessToken
     expiresIn
 
     async signIn(data) {
-        let res = await client.post('customers/login', JSON.stringify(data))
-        console.log(res.data)
+        try {
+            let res = await client.post('customers/login', JSON.stringify(data))
+            this.customer = res.data.customer
+            this.accessToken = res.data.accessToken
+            this.expiresIn = res.data.expiresIn
+            this.isAuthenticated = true
+            console.log(this.customer)
+            return 'Success'
+        }
+        catch (e) {
+            let status = e.response.status
+            if (status === 400) {
+                return e.response.data.error.message
+            }
+            else {
+                return "An unhandled exception has occured"
+            }
+        }
+    }
+
+    async signUp(data) {
+        try {
+            let res = await client.post('customers', JSON.stringify(data))
+            this.customer = res.data.customer
+            this.accessToken = res.data.accessToken
+            this.expiresIn = res.data.expiresIn
+            this.isAuthenticated = true
+            console.log(this.customer)
+            return 'Success'
+        }
+        catch (e) {
+            let status = e.response.status
+            if (status === 400) {
+                return e.response.data.error.message
+            }
+            else {
+                return "An unhandled exception has occured"
+            }
+        }
+
     }
 
     async loadApp() {

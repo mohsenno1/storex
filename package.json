@@ -16,8 +16,11 @@
     "react-native-elements": "^1.1.0",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-keyboard-aware-scroll-view": "^0.8.0",
+    "react-native-modal-datetime-picker": "^6.1.0",
     "react-native-snap-carousel": "^3.7.5",
     "react-native-svg": "^9.3.7",
+    "react-native-switch-pro": "^1.0.2",
+    "react-native-switch-selector": "^1.1.12",
     "react-native-vector-icons": "^6.4.2",
     "react-navigation": "^3.6.1"
   },

@@ -49,14 +49,8 @@ export default class SignInPage extends Component {
         let error = await this.props.auth.signIn({
             email: this.email,
             password: this.password
-        }).catch(e => {
-            if (e.response.status === 400) {
-                this.errorMessage = e.response.data.error.message
-            }
-            else {
-                this.errorMessage = "An unhandled exception has occured"
-            }
         })
+        this.errorMessage = error
         this.isLoading = false
 
     }

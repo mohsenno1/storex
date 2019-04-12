@@ -17,26 +17,16 @@ export default class App extends Component {
 
   constructor(props) {
     super(props)
-    // reaction(() => [stores.auth.isAuthenticated, stores.auth.isAnonymous],
-    //   () => {
-    //     let nav = this._navigator.state.nav
-    //     let currentRoute = nav.routes[nav.index]
-    //     let navParams = currentRoute.params
-    //     if (navParams && navParams.returnPage) {
-    //       this.reset(navParams.returnPage, navParams.returnParams)
-    //     }
-    //     else this.reset('VideoPage')
-    //   }, {
-    //     equals: (prev, next) => {
-    //       // console.log('prev: ' + prev)
-    //       // console.log('next: ' + next)
-    //       if (prev[0] !== next[0])
-    //         return false
-    //       if (prev[1] !== next[1] && prev[0])
-    //         return false
-    //       return true
-    //     }
-    //   })
+    reaction(() => stores.auth.isAuthenticated,
+      () => {
+        // let nav = this._navigator.state.nav
+        // let currentRoute = nav.routes[nav.index]
+        // let navParams = currentRoute.params
+        // if (navParams && navParams.returnPage) {
+        //   this.reset(navParams.returnPage, navParams.returnParams)
+        // }
+        this.reset('ShopPage')
+      })
   }
 
   async componentDidMount() {
@@ -57,8 +47,8 @@ export default class App extends Component {
   }
 
   reset(routeName, params) {
-    let actions = [NavigationActions.navigate({ routeName: 'VideoPage' })]
-    if (routeName !== 'VideoPage')
+    let actions = [NavigationActions.navigate({ routeName: 'ShopPage' })]
+    if (routeName !== 'ShopPage')
       actions.push(NavigationActions.navigate({ routeName: routeName, params: params }))
     this._navigator.dispatch(
       StackActions.reset({

@@ -4,6 +4,8 @@ import WelcomePage from '../screens/landing-signup/WelcomePage'
 import SignInPage from '../screens/landing-signup/SignInPage'
 import HomePage from "../screens/landing-signup/HomePage";
 import SignUpPage from "../screens/landing-signup/SignUpPage";
+
+import ShopPage from '../screens/shop/ShopPage'
 import { colors } from './Constans';
 
 const AppNavigator = () => createStackNavigator(
@@ -11,7 +13,8 @@ const AppNavigator = () => createStackNavigator(
     WelcomePage,
     SignInPage,
     HomePage,
-    SignUpPage
+    SignUpPage,
+    ShopPage
   },
   {
     initialRouteName: auth.showWelcomPages? "WelcomePage": "HomePage",
