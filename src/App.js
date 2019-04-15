@@ -25,7 +25,7 @@ export default class App extends Component {
         // if (navParams && navParams.returnPage) {
         //   this.reset(navParams.returnPage, navParams.returnParams)
         // }
-        this.reset('ShopPage')
+        this.reset('Shop')
       })
   }
 
@@ -47,8 +47,8 @@ export default class App extends Component {
   }
 
   reset(routeName, params) {
-    let actions = [NavigationActions.navigate({ routeName: 'ShopPage' })]
-    if (routeName !== 'ShopPage')
+    let actions = [NavigationActions.navigate({ routeName: 'Shop' })]
+    if (routeName !== 'Shop')
       actions.push(NavigationActions.navigate({ routeName: routeName, params: params }))
     this._navigator.dispatch(
       StackActions.reset({

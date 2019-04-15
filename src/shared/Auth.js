@@ -9,7 +9,7 @@ class Auth {
     @observable isAuthenticated = false
 
     customer
-    accessToken
+    accessToken = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcl9pZCI6MjUsIm5hbWUiOiJhICIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTU1NTA4NzQ0MCwiZXhwIjoxNTU1MTczODQwfQ.YknJxSRJv7Ykz5XWWGnlOTVl8d3oW-rfs-4Q8atudWE'
     expiresIn
 
     async signIn(data) {
@@ -19,7 +19,7 @@ class Auth {
             this.accessToken = res.data.accessToken
             this.expiresIn = res.data.expiresIn
             this.isAuthenticated = true
-            console.log(this.customer)
+            console.log(this.accessToken)
             return 'Success'
         }
         catch (e) {

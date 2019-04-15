@@ -9,7 +9,10 @@ const colors = {
     twitter: '#38A1F3',
     lightText: '#999999',
     darkText: '#454545',
-    inputLine: '#C4C4C4'
+    inputLine: '#C4C4C4',
+    menColor: '#93D6DC',
+    womenColor: '#F6966C',
+    black10: 'rgba(0,0,0,0.1)'
 }
 
 const gstyles = StyleSheet.create({
@@ -65,6 +68,10 @@ const gstyles = StyleSheet.create({
     buttonContainer: {
         width: '100%',
         paddingHorizontal: 10
+    },
+    center: {
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })
 

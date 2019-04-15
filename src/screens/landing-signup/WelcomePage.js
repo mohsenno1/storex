@@ -64,7 +64,6 @@ export default class WelcomePage extends Component {
     }
 
     onStapToItem = (index) => {
-        console.log(`index: ${index}`)
         this.currentPageId = welcomePages[index].id
     }
 

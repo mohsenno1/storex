@@ -5,12 +5,12 @@ import { colors } from '../shared/Constans';
 
 export default class PolygonIcon extends Component {
     render() {
-        const { size, color } = this.props
+        const { size, color, strokeWidth, stroke } = this.props
         return (
             <View style={this.props.style}>
                 <View>
                     <Svg width={size || 142} height={size * 1.14 || 162} viewBox="0 0 142 162">
-                        <G stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <G stroke={stroke || "none"} strokeWidth={strokeWidth || 1} fill="none" fillRule="evenodd">
                             <G transform="translate(-164.000000, -817.000000)">
                                 <G transform="translate(29.000000, 681.000000)">
                                     <G transform="translate(125.000000, 136.000000)">
