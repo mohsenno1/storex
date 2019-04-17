@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native';
-import { gstyles, colors } from '../shared/Constans';
+import { gstyles, colors } from '../shared/Constants';
 import { Input } from 'react-native-elements';
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import { inject, observer } from 'mobx-react';

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Header, Image } from 'react-native-elements';
 import EIcon from 'react-native-vector-icons/Entypo'
-import { colors } from '../shared/Constans';
+import { colors } from '../shared/Constants';
 import Logo from './Logo';
 
 export default class MyHeader extends Component {

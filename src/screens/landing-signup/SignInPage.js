@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, Text, View, Dimensions } from 'react-native'
 import { Input, Button } from 'react-native-elements';
 import { observer, inject } from 'mobx-react';
-import { colors, gstyles } from './../../shared/Constans';
+import { colors, gstyles } from './../../shared/Constants';
 import { observable, reaction } from 'mobx';
 import EIcon from 'react-native-vector-icons/Entypo'
 import FIcon from 'react-native-vector-icons/FontAwesome'
@@ -31,8 +31,8 @@ export default class SignInPage extends Component {
     }
 
     @observable errorMessage = null
-    @observable email = ''
-    @observable password = ''
+    @observable email = 'a@a.com'
+    @observable password = '12345678'
     @observable emailErrorMessage = ''
     @observable passwordErrorMessage = ''
     @observable isLoading = false

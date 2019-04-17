@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { gstyles, colors } from '../../shared/Constans';
+import { gstyles, colors } from '../../shared/Constants';
 import FancyLine from '../../components/FancyLine';
 import { Input, Button } from 'react-native-elements'
 import MyDateTimePicker from '../../components/MyDateTimePicker';

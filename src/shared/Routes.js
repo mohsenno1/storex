@@ -8,7 +8,7 @@ import HomePage from "../screens/landing-signup/HomePage";
 import SignUpPage from "../screens/landing-signup/SignUpPage";
 
 import Shop from '../screens/shop/Shop'
-import { colors } from './Constans';
+import { colors } from './Constants';
 import MyHeader from '../components/MyHeader';
 
 const AppNavigator = () => createStackNavigator(
@@ -20,7 +20,7 @@ const AppNavigator = () => createStackNavigator(
     Shop
   },
   {
-    initialRouteName: auth.showWelcomPages? "WelcomePage": "Shop",
+    initialRouteName: auth.showWelcomPages? "WelcomePage": "HomePage",
     defaultNavigationOptions: ({navigation}) => ({
       //header: props => <MyHeader {...props}/>,
       headerTitleStyle: { textAlign: 'center', alignSelf: 'center' },

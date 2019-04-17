@@ -12,7 +12,11 @@ const colors = {
     inputLine: '#C4C4C4',
     menColor: '#93D6DC',
     womenColor: '#F6966C',
-    black10: 'rgba(0,0,0,0.1)'
+    black10: 'rgba(0,0,0,0.1)',
+    black20: 'rgba(0,0,0,0.2)',
+    black30: 'rgba(0,0,0,0.3)',
+    black40: 'rgba(0,0,0,0.4)',
+    black50: 'rgba(0,0,0,0.5)',
 }
 
 const gstyles = StyleSheet.create({
@@ -39,13 +43,14 @@ const gstyles = StyleSheet.create({
         flexDirection: 'column'
     },
     inputStyle: {
-
+        fontSize: 15,
+        padding: 0
     },
     textInputContainer: {
-
+        paddingTop: 10
     },
     textInput: {
-        borderColor: colors.inputLine
+        borderColor: colors.inputLine,
     },
     button: {
         backgroundColor: colors.yellow,

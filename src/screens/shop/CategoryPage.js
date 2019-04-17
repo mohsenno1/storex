@@ -2,7 +2,7 @@ import React, { Component, PureComponent } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { colors, gstyles } from '../../shared/Constans';
+import { colors, gstyles } from '../../shared/Constants';
 import { FlatList } from 'react-native-gesture-handler';
 import { observable, intercept } from 'mobx';
 import { observer, inject } from 'mobx-react';

@@ -6,12 +6,18 @@ import { auth } from './Stores';
 
 class Api {
     @observable cartItems = []
-    cart_id
+    @observable total = 0
+    @observable subtotal = 0
+    @observable shipping = 0
+    @observable tax = 0
+
+    cart_id = null
 
     async get(url, data) {
         try {
-            //data.accessToken = auth.accessToken
+            client.defaults.headers.common['user-key'] = auth.accessToken
             let res = await client.get(url, { params: data })
+            client.headers
             return res.data
         }
         catch (e) { this.handleError(e) }
@@ -19,11 +25,30 @@ class Api {
 
     async post(url, data) {
         try {
-            //data.accessToken = auth.accessToken
+            client.defaults.headers.common['user-key'] = auth.accessToken
             let res = await client.post(url, JSON.stringify(data))
             return res.data
         }
         catch (e) { this.handleError(e) }
+    }
+
+    async put(url, data) {
+        try {
+            client.defaults.headers.common['user-key'] = auth.accessToken
+            let res = await client.put(url, JSON.stringify(data))
+            
+        }
+        catch (e) { this.handleError(e) }
+    }
+
+    async updateCustomer(data) {
+        data.email = auth.customer.email
+        await this.put('customer', data)
+    }
+
+    async updateCustomerAddress(data) {
+        await this.put('customers/address', data)
+        auth.customer = await this.get('customer')
     }
 
     async initShoppingCart() {
@@ -35,6 +60,7 @@ class Api {
             await AsyncStorage.setItem('@cart_id', this.cart_id)
         }
         await this.loadShoppingCart()
+        await this.loadTotal()
     }
 
     async loadShoppingCart() {
@@ -43,6 +69,16 @@ class Api {
         res.forEach(element => {
             this.cartItems.push(element)
         });
+    }
+
+    async loadTotal() {
+        let res = await this.get(`shoppingcart/totalAmount/${this.cart_id}`)
+        this.subtotal = res.total_amount? res.total_amount : 0
+        this.calculateTotal()
+    }
+
+    calculateTotal() {
+        this.total = Math.round((this.subtotal + this.shipping + this.tax) * 100) / 100
     }
 
     async addToCart(product_id) {
@@ -73,6 +109,7 @@ class Api {
             error = "An unhandled exception has occured"
         }
         alert(error)
+        throw error
     }
 
 

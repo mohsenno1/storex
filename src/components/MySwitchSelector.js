@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import SwitchSelector from "react-native-switch-selector";
 import { observable } from 'mobx';
-import { colors, gstyles } from '../shared/Constans';
+import { colors, gstyles } from '../shared/Constants';
 
 export default class MySwitchSelector extends Component {
     constructor(props) {

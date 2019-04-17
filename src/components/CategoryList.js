@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { observable } from 'mobx';
 import { inject, observer } from 'mobx-react';
 import { ScrollView } from 'react-native-gesture-handler';
-import { gstyles, colors } from '../shared/Constans';
+import { gstyles, colors } from '../shared/Constants';
 
 @inject('api')
 @observer

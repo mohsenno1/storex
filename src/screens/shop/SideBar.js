@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
 import { ScrollView, Text, View, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
-import { colors, gstyles } from '../../shared/Constans';
+import { colors, gstyles } from '../../shared/Constants';
 import ShopIcon from '../../components/ShopIcon';
 import { Badge } from 'react-native-elements';
 import BagIcon from '../../components/BagIcon';
@@ -38,7 +38,7 @@ class SideBar extends Component {
                     </View>
                     <View style={styles.items}>
                         <TouchableOpacity style={{ padding: 20 }}
-                            onPress={() => this.navigateToScreen('SideBar')}>
+                            onPress={() => this.navigateToScreen('BagPage')}>
                             <View>
                                 <BagIcon size={30} />
                                 <Text style={styles.itemsText}>Bag</Text>

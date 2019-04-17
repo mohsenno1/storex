@@ -5,15 +5,19 @@ import ShopPage from './ShopPage';
 import MyHeader from '../../components/MyHeader';
 import CategoryPage from './CategoryPage';
 import ProductPage from './ProductPage';
+import BagPage from './BagPage';
+import CheckoutPage from './CheckoutPage';
 
 const ShopNavigator = createStackNavigator(
     {
         ShopPage,
         CategoryPage,
-        ProductPage
+        ProductPage,
+        BagPage,
+        CheckoutPage,
     },
     {
-        initialRouteName: "ShopPage",
+        initialRouteName: "BagPage",
         defaultNavigationOptions: ({ navigation, screenProps }) => ({
             header: props => <MyHeader {...props}
                 menuPress={() => {
@@ -24,12 +28,10 @@ const ShopNavigator = createStackNavigator(
 );
 const AppNavigator = createDrawerNavigator(
     {
-        Shop: { screen: ShopNavigator },
-        SideBar
+        Shop: { screen: ShopNavigator }
     },
     {
         contentComponent: props => <SideBar {...props} />,
-
     });
 
 export default AppNavigator

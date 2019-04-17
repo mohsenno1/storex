@@ -5,7 +5,7 @@ import Carousel, { Pagination } from 'react-native-snap-carousel';
 import { observer, inject } from 'mobx-react';
 import { Image, Icon, Button, Header } from 'react-native-elements';
 import Diamond from '../../components/Diamond';
-import { colors, gstyles } from '../../shared/Constans';
+import { colors, gstyles } from '../../shared/Constants';
 import PolygonIcon from '../../components/PolygonIcon';
 import ItemColor from '../../components/ItemColor';
 import ADIcon from 'react-native-vector-icons/AntDesign'
@@ -33,7 +33,7 @@ export default class ProductPage extends Component {
     }
 
     product_id = 1
-    @observable product //= constProduct
+    @observable product = null//= constProduct
     @observable currentImageId = 0
     @observable customizePanelVisible = false
 

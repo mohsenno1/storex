@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import Svg, { G, Path, Polygon } from 'react-native-svg';
-import { colors } from '../shared/Constans';
+import { colors } from '../shared/Constants';
 
 export default class BagIcon extends Component {
     render() {
-        const { size, color } = this.props
+        const { size, color, stroke } = this.props
         return (
             <Svg width={size || 48} height={size * (55 / 48) || 55} viewBox="0 0 205.24 174.68">
                 <G>
                     <Path fill={color || 'none'} 
-                        stroke="white"  
-                        strokeWidth={size / 3} 
+                        stroke={stroke || "white"}  
+                        strokeWidth={size / 3 || 10} 
                         strokeLinecap="round" 
                         strokeLinejoin="round" 
                         strokeMiterlimit="2.61313" 

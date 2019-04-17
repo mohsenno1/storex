@@ -5,7 +5,7 @@ import Diamond from '../../assets/images/homePageDiamond.svg'
 import { inject, observer } from 'mobx-react';
 import ItemColor from '../../components/ItemColor';
 import { observable } from 'mobx';
-import { colors } from '../../shared/Constans';
+import { colors } from '../../shared/Constants';
 import { Button } from 'react-native-elements';
 
 @inject()

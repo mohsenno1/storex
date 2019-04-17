@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground, Image, TouchableOpacity } from 'react-native';
-import { colors, gstyles } from '../../shared/Constans';
+import { colors, gstyles } from '../../shared/Constants';
 import Offer from './../../assets/images/offer.png'
 import FullWidthImage from '../../components/FullWidthImage';
 import { PanGestureHandler, TouchableHighlight } from 'react-native-gesture-handler';
