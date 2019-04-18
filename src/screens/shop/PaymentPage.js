@@ -14,30 +14,38 @@ import TextInputMask from "react-native-text-input-mask";
 @inject("auth", "api")
 @observer
 export default class PaymentPage extends Component {
-  @observable cardNo = ''
-  @observable expiry = ''
-  @observable cvc = ''
+  @observable cardNo = "";
+  @observable expiry = "";
+  @observable cvc = "";
 
   validate() {
     if (!this.cardNo || this.cardNo.length < 16) {
-      alert("'Card No' Is Required")
-      return false
+      alert("'Card No' Is Required");
+      return false;
     }
     if (!this.expiry || this.expiry.length < 4) {
-      alert("'Expiry' Is Required")
-      return false
+      alert("'Expiry' Is Required");
+      return false;
     }
     if (!this.cvc || this.expiry.cvc < 3) {
-      alert("'CVC' Is Required")
-      return false
+      alert("'CVC' Is Required");
+      return false;
     }
-    return true
+    return true;
   }
 
-  payNow() {
-    if(this.validate()) {
-
-      this.props.navigation.navigate("ReviewPage")
+  async payNow() {
+    if (this.validate()) {
+      try {
+        await this.props.api.payNow({
+          cardNo: this.cardNo,
+          expiry: this.expiry,
+          cvc: this.cvc
+        });
+        this.props.navigation.navigate("ReviewPage");
+      } catch (e) {
+        alert(e);
+      }
     }
   }
 

@@ -11,23 +11,6 @@ import AddressPage from './AddressPage'
 import PaymentPage from './PaymentPage'
 import ReviewPage from './ReviewPage'
 
-// @inject()
-// @observer
-// export default class CheckoutPage extends Component {
-//   constructor(props) {
-//     super(props);
-//   }
-
-//   @observable activePage = 'Address'
-//   render() {
-//     return (
-//       <View style={{ flex: 1 }}>
-//         <CustomTabBar active={this.activePage} onPress={item => this.activePage = item} />
-//         <AddressPage />
-//       </View>
-//     );
-//   }
-// }
 
 const TabNavigator = createMaterialTopTabNavigator({
   AddressPage,
@@ -41,7 +24,7 @@ const TabNavigator = createMaterialTopTabNavigator({
         const { index, routes } = navigation.state;
         return <CustomTabBar list={routes} active={index} onPress={item => navigation.navigate(item)} />
       },
-  }}
+  }},
 }
 );
 

@@ -5,7 +5,7 @@ import FancyLine from './FancyLine';
 import { observer, inject } from 'mobx-react';
 import { observable } from 'mobx';
 
-const titles = ['Address', 'Payment', 'Review']
+const titles = ['Address', 'Payment', 'Review', 'A', 'B']
 
 @inject()
 @observer

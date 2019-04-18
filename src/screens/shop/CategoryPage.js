@@ -13,7 +13,8 @@ import CategoryList from '../../components/CategoryList';
 export default class CategoryPage extends Component {
   constructor(props) {
     super(props);
-    this.category = props.navigation.state.params.category
+    const { params } = this.props.navigation.state
+    this.category = params? params.category: 'men'
     props.navigation.setParams({
       rightComponent: <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center', marginTop: -24, }}
         onPress={this.props.menuPress}>

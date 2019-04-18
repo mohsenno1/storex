@@ -53,18 +53,18 @@ class SideBar extends Component {
                 </View>
                 <View style={[gstyles.row, { height: 140 }]}>
                     <View style={styles.items}>
-                        <TouchableOpacity style={styles.itemsTouchable}>
+                        <TouchableOpacity style={styles.itemsTouchable} onPress={() => this.navigateToScreen('InspirationPage')}>
                             <View style={gstyles.center}>
                                 <FIcon name="sun" size={37} color="white" />
-                                <Text style={styles.itemsText}>Shop</Text>
+                                <Text style={styles.itemsText}>Inspiration</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.items}>
-                        <TouchableOpacity style={{ padding: 20 }}>
+                        <TouchableOpacity style={{ padding: 20 }} onPress={() => this.navigateToScreen('StoresPage')}>
                             <View style={gstyles.center}>
                                 <EIcon name="location" size={50} color="white" />
-                                <Text style={styles.itemsText}>Bag</Text>
+                                <Text style={styles.itemsText}>Stores</Text>
                             </View>
                         </TouchableOpacity>
                     </View>

@@ -31,8 +31,8 @@ export default class ShopPage extends Component {
           <TouchableOpacity style={{ flexDirection: 'row' }}
             onPress={() => this.props.navigation.navigate('CategoryPage', { category: 'men' })}>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
-              <Text style={[gstyles.upperText, { color: 'white', fontSize: 45 }]}>Men</Text>
-              <Text style={[gstyles.upperText, { color: 'white', fontSize: 20 }]}>Outwear</Text>
+              <Text style={[gstyles.upperText, { color: 'white', fontSize: 40 }]}>Men</Text>
+              <Text style={[gstyles.upperText, { color: 'white', fontSize: 18 }]}>Outwear</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -40,8 +40,8 @@ export default class ShopPage extends Component {
           <TouchableOpacity style={{ flexDirection: 'row' }}
             onPress={() => this.props.navigation.navigate('CategoryPage', { category: 'women' })}>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
-              <Text style={[gstyles.upperText, { color: 'white', fontSize: 45 }]}>Women</Text>
-              <Text style={[gstyles.upperText, { color: 'white', fontSize: 20 }]}>Outwear</Text>
+              <Text style={[gstyles.upperText, { color: 'white', fontSize: 40 }]}>Women</Text>
+              <Text style={[gstyles.upperText, { color: 'white', fontSize: 18 }]}>Outwear</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -58,7 +58,7 @@ export default class ShopPage extends Component {
 
 const styles = StyleSheet.create({
   alertContainer: {
-    height: 60,
+    height: 40,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.gray,
