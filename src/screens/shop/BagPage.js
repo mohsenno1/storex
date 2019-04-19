@@ -5,7 +5,7 @@ import { colors, gstyles } from "../../shared/Constants";
 import BagIcon from "./../../components/BagIcon";
 import FAIcon from "react-native-vector-icons/FontAwesome";
 import { FlatList } from "react-native-gesture-handler";
-import { Button } from "react-native-elements";
+import { Button, Image } from "react-native-elements";
 
 @inject("api")
 @observer
@@ -108,6 +108,7 @@ class CartItem extends PureComponent {
   render() {
     const { item } = this.props;
     const discounted = item.discounted_price > 0;
+    console.log(item)
     return (
       <TouchableOpacity style={styles.item} onPress={this.props.onPress}>
         <View
@@ -116,7 +117,17 @@ class CartItem extends PureComponent {
             height: "100%",
             backgroundColor: colors.lightGray
           }}
-        />
+        >
+          <Image
+            source={{
+              uri: `https://mobilebackend.turing.com/images/products/${
+                item.thumbnail
+              }`
+            }}
+            style={{ height: 80, width: 80 }}
+            resizeMode="contain"
+          />
+        </View>
         <View style={{ flex: 1, flexDirection: "row" }}>
           <View style={{ flexDirection: "column", flex: 1, padding: 10 }}>
             <Text style={{ ...gstyles.upperText, fontSize: 16 }}>

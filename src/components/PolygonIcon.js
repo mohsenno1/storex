@@ -9,15 +9,9 @@ export default class PolygonIcon extends Component {
         return (
             <View style={this.props.style}>
                 <View>
-                    <Svg width={size || 142} height={size * 1.14 || 162} viewBox="0 0 142 162">
-                        <G stroke={stroke || "none"} strokeWidth={strokeWidth || 1} fill="none" fillRule="evenodd">
-                            <G transform="translate(-164.000000, -817.000000)">
-                                <G transform="translate(29.000000, 681.000000)">
-                                    <G transform="translate(125.000000, 136.000000)">
-                                        <Polygon fill={color || colors.gray} points="81 0 151.148058 40.5 151.148058 121.5 81 162 10.8519423 121.5 10.8519423 40.5" />
-                                    </G>
-                                </G>
-                            </G>
+                    <Svg width={size || 142} height={size * 1.05 || 162} viewBox="0 0 153 162">
+                        <G>
+                        <Polygon stroke={stroke || "none"} strokeWidth={strokeWidth || 1} fill={color || colors.gray} points="81 0 151.148058 40.5 151.148058 121.5 81 162 10.8519423 121.5 10.8519423 40.5" />
                         </G>
                     </Svg>
                 </View>

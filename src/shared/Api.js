@@ -107,11 +107,11 @@ class Api {
         return Math.round((this.subtotal + this.shippingAmount + this.taxAmount) * 100) / 100
     }
 
-    async addToCart(product_id) {
+    async addToCart(product_id, attributes) {
         let data = {
             cart_id: this.cart_id,
             product_id: product_id,
-            attributes: 'none'
+            attributes: attributes
         }
 
         await this.post('shoppingcart/add', data)
