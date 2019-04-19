@@ -108,7 +108,6 @@ class CartItem extends PureComponent {
   render() {
     const { item } = this.props;
     const discounted = item.discounted_price > 0;
-    console.log(item)
     return (
       <TouchableOpacity style={styles.item} onPress={this.props.onPress}>
         <View
